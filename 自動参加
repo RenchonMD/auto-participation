@@ -1,0 +1,29 @@
+bool AutoGamev1;
+
+// GoGame Offset
+auto AutoGame = reinterpret_cast<void(*) (void *)>(getAbsoluteAddress("libil2cpp.so", 0x1A9F1D8));
+
+
+void (*old_DT1)(void *instance);
+void DT1(void *instance) {
+    if (instance != NULL && AutoGamev1) {
+        AutoGame(instance);
+    }
+    return old_DT1(instance);
+}
+
+
+//update Offset
+A64HookFunction((void*)getAbsoluteAddress(targetLibName, 0x1AA061C), (void*)DT1, (void**)&old_DT1);											
+	
+
+//GoGame Offset												
+AutoJump = (void (*)(void *)) getAbsoluteAddress("libil2cpp.so", 0x1A9F1D8);	
+
+
+OBFUSCATE("1_Toggle_自動参加"), 	
+
+
+case 1:
+    AutoGamev1 = boolean;
+　　 break;
