@@ -18,7 +18,7 @@ A64HookFunction((void*)getAbsoluteAddress(targetLibName, 0x1AA061C), (void*)DT1,
 	
 
 //GoGame Offset												
-AutoJump = (void (*)(void *)) getAbsoluteAddress("libil2cpp.so", 0x1A9F1D8);	
+AutoGame = (void (*)(void *)) getAbsoluteAddress("libil2cpp.so", 0x1A9F1D8);	
 
 
 OBFUSCATE("1_Toggle_自動参加"), 	
